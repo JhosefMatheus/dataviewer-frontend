@@ -8,8 +8,7 @@ import {
   Legend
 } from 'recharts'
 
-function PerformanceChart({ data, width }) {
-  console.log(data)
+export default function PerformanceChart({ data, width }) {
   return (
     <BarChart
       width={width}
@@ -31,7 +30,5 @@ function PerformanceChart({ data, width }) {
       <Bar dataKey="erros" fill="#DB2927" />
       <Bar dataKey="restantes" fill="#124375" />
     </BarChart>
-  )
+  );
 }
-
-export default PerformanceChart
