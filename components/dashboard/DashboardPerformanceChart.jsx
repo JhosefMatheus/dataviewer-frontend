@@ -6,6 +6,7 @@ import {
 } from "@mui/material";
 import nextConfig from "../../next.config";
 import dynamic from "next/dynamic.js";
+import SideInfo from "../SideInfo";
 
 export default function DashboardPerformanceChart() {
     const [ performanceData, setPerformanceData ] = useState(null);
@@ -155,50 +156,8 @@ export default function DashboardPerformanceChart() {
                         m: 3
                     }}
                 >
-                    <Box
-                        sx={{
-                            my: 2
-                        }}
-                    >
-                        <Typography
-                            sx={{
-                                fontSize: "2rem",
-                                color: "#4163BF"
-                            }}
-                        >
-                            {assiduousStudents}
-                        </Typography>
-                        <Typography
-                            sx={{
-                                fontSize: "0.875rem",
-                                color: "#c0c0c0"
-                            }}
-                        >
-                            Alunos assíduos
-                        </Typography>
-                    </Box>
-                    <Box
-                        sx={{
-                            my: 2
-                        }}
-                    >
-                        <Typography
-                            sx={{
-                                fontSize: "2rem",
-                                color: "#9DB4F5"
-                            }}
-                        >
-                            {missingStudents}
-                        </Typography>
-                        <Typography
-                            sx={{
-                                fontSize: "0.875rem",
-                                color: "#c0c0c0"
-                            }}
-                        >
-                            Número de alunos faltantes
-                        </Typography>
-                    </Box>
+                    <SideInfo numberInfo={assiduousStudents} legend="Alunos assíduos" numberColor="#4163BF" />
+                    <SideInfo numberInfo={missingStudents} legend="Alunos faltosos" numberColor="#9DB4F5" />
                 </Box>
                 <Box
                     sx={{

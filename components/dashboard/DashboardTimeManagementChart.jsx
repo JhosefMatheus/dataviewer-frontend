@@ -2,9 +2,13 @@ import { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
 import nextConfig from "../../next.config";
+import SideInfo from "../SideInfo";
 
 export default function DashboardTimeManagementChart() {
     const [ timeManagementData, setTimeManagementData ] = useState(null);
+
+    const [ submissionsNumber, setSubmissionsNumber ] = useState(0);
+    const [ accessesAmount, setAccessesAmount ] = useState(0);
 
     const Chart = dynamic(() => import("../charts/TimeManagement.jsx"), { ssr: false });
 
@@ -26,7 +30,43 @@ export default function DashboardTimeManagementChart() {
             setTimeManagementData(responseData.data);
         }
 
+        async function getSubmissionsNumber() {
+            const token = localStorage.getItem("token");
+
+            const response = await fetch(`${nextConfig.urlApi}/dashboard/submissionsNumberData`, {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+
+            const responseData = await response.json();
+
+            setSubmissionsNumber(responseData.data);
+        }
+
+        async function getAccessesAmount() {
+            const token = localStorage.getItem("token");
+
+            const response = await fetch(`${nextConfig.urlApi}/dashboard/accessesAmountData`, {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+
+            const responseData = await response.json();
+
+            setAccessesAmount(responseData.data);
+        }
+
         getTimeManagementData();
+        getSubmissionsNumber();
+        getAccessesAmount();
     }, []);
 
     return (
@@ -59,17 +99,22 @@ export default function DashboardTimeManagementChart() {
             >
                 <Box
                     sx={{
+                        width: "25%",
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "flex-start",
-                        justifyContent: "center"
+                        justifyContent: "center",
+                        m: 3
                     }}
                 >
-                    <Box>
-                        <Typography></Typography>
-                    </Box>
+                    <SideInfo numberInfo={submissionsNumber} legend="Número de submissões" numberColor="#4163BF" />
+                    <SideInfo numberInfo={accessesAmount} legend="Quantidade de acessos" numberColor="#9DB4F5" />
                 </Box>
-                <Box>
+                <Box
+                    sx={{
+                        width: "75%"
+                    }}
+                >
                     <Chart width={600} data={timeManagementData} />
                 </Box>
             </Box>
