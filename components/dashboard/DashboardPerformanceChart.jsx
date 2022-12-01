@@ -79,7 +79,7 @@ export default function DashboardPerformanceChart() {
         getChartData();
     }, [subject]);
 
-    const Chart = dynamic(() => import("../PerformanceChart.jsx"), { ssr: false });
+    const Chart = dynamic(() => import("../charts/PerformanceChart.jsx"), { ssr: false });
 
     return (
         <Box

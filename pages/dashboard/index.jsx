@@ -4,6 +4,8 @@ import {
     Box
 } from "@mui/material";
 import DashboardPerformanceChart from "../../components/dashboard/DashboardPerformanceChart.jsx";
+import DashboardTimeManagementChart from "../../components/dashboard/DashboardTimeManagementChart.jsx";
+import DashboardTrackingChart from "../../components/dashboard/DashboardTrackingChart.jsx";
 
 export default function Home() {
     return (
@@ -41,9 +43,7 @@ export default function Home() {
                             alignItems: "center"
                         }}
                     >
-                        <Typography>
-                            Gráfico de acompanhamento
-                        </Typography>
+                        <DashboardTrackingChart />
                     </Box>
                 </Grid>
                 <Grid item xs={8}>
@@ -56,9 +56,7 @@ export default function Home() {
                             alignItems: "center"
                         }}
                     >
-                        <Typography>
-                            Gráfico de gestão de tempo
-                        </Typography>
+                        <DashboardTimeManagementChart />
                     </Box>
                 </Grid>
                 <Grid item xs={4}>
