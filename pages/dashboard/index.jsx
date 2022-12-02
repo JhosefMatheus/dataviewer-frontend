@@ -3,6 +3,7 @@ import {
     Grid,
     Box
 } from "@mui/material";
+import DashboardOverallRanking from "../../components/dashboard/DashboardOverallRanking.jsx";
 import DashboardPerformanceChart from "../../components/dashboard/DashboardPerformanceChart.jsx";
 import DashboardTimeManagementChart from "../../components/dashboard/DashboardTimeManagementChart.jsx";
 import DashboardTrackingChart from "../../components/dashboard/DashboardTrackingChart.jsx";
@@ -63,15 +64,13 @@ export default function Home() {
                     <Box
                         sx={{
                             backgroundColor: "#fff",
-                            height: "100%",
+                            height: 400,
                             display: "flex",
                             justifyContent: "center",
-                            alignItems: "center"
+                            alignItems: "flex-start"
                         }}
                     >
-                        <Typography>
-                            Gráfico de ranking geral
-                        </Typography>
+                        <DashboardOverallRanking />
                     </Box>
                 </Grid>
             </Grid>
