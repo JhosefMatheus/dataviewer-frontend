@@ -14,11 +14,11 @@ function MyApp({ Component, pageProps }) {
       {noAuthRequired.includes(router.pathname) ? (
         <Component {...pageProps} />
       ) : (
-        // <ProtectedRoute>
+        <ProtectedRoute>
           <Layout>
             <Component {...pageProps} />
           </Layout>
-        // </ProtectedRoute>
+        </ProtectedRoute>
       )}
     </AuthProvider>
   )

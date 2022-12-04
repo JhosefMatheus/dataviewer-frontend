@@ -23,9 +23,9 @@
 }
 
 .containerclasses {
-  align-content: flex-start;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .containercharts {
@@ -109,8 +109,10 @@
 }
 
 .maincard {
-  margin: 10px;
-  padding: 20px;
+  width: 100%;
+  display: flex;
+  /* margin: 10px; */
+  /* padding: 20px; */
   text-align: left;
   color: #273b73;
   background-color: #fff;

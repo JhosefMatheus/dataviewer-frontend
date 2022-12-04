@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import StudentCards from '../../components/StudentCards'
 
-const ClassChart = dynamic(() => import('../../components/PerformanceChart.jsx'), {
+const ClassChart = dynamic(() => import('../../components/charts/PerformanceChart'), {
   ssr: false
 })
 
